@@ -89,6 +89,12 @@ sudo systemctl daemon-reload
 sudo systemctl enable noisd
 sudo systemctl restart noisd && sudo journalctl -u noisd -f -o cat
 
+source $HOME/.bash_profile
+
+noisd keys add $WALLET
+
+
+
 
 
 
