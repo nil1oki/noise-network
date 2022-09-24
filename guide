@@ -1,4 +1,4 @@
-NODENAME=Niloki
+NODENAME=<NAME>
 
 NOIS_PORT=14
 echo "export NODENAME=$NODENAME" >> $HOME/.bash_profile
@@ -101,7 +101,7 @@ source $HOME/.bash_profile
 
 curl --header "Content-Type: application/json" \
   --request POST \
-  --data '{"denom":"unois","address":"nois10uz9a8eskpmylyrhrjgyr85f8r5myluum07zvn"}' \
+  --data '{"denom":"unois","address":"<YOU_WALLET>"}' \
   http://faucet.noislabs.com/credit
   
   noisd query bank balances $WALLET_ADDRESS
