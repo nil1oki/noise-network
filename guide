@@ -93,7 +93,31 @@ source $HOME/.bash_profile
 
 noisd keys add $WALLET
 
+WALLET_ADDRESS=$(noisd keys show $WALLET -a)
+VALOPER_ADDRESS=$(noisd keys show $WALLET --bech val -a)
+echo 'export WALLET_ADDRESS='${WALLET_ADDRESS} >> $HOME/.bash_profile
+echo 'export VALOPER_ADDRESS='${VALOPER_ADDRESS} >> $HOME/.bash_profile
+source $HOME/.bash_profile
 
+curl --header "Content-Type: application/json" \
+  --request POST \
+  --data '{"denom":"unois","address":"nois10uz9a8eskpmylyrhrjgyr85f8r5myluum07zvn"}' \
+  http://faucet.noislabs.com/credit
+  
+  noisd query bank balances $WALLET_ADDRESS
+  
+  noisd tx staking create-validator \
+  --amount 100000000unois \
+  --from $WALLET \
+  --commission-max-change-rate "0.01" \
+  --commission-max-rate "0.2" \
+  --commission-rate "0.09" \
+  --min-self-delegation "1" \
+  --pubkey  $(noisd tendermint show-validator) \
+  --moniker $NODENAME \
+  --chain-id $NOIS_CHAIN_ID
+  
+  
 
 
 
