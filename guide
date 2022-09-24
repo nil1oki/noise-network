@@ -1,7 +1,6 @@
-###
-```NODENAME=<NAME>```
-###
-```NOIS_PORT=14
+### NODENAME=<NAME>```
+
+###NOIS_PORT=14
 echo "export NODENAME=$NODENAME" >> $HOME/.bash_profile
 if [ ! $WALLET ]; then
 	echo "export WALLET=wallet" >> $HOME/.bash_profile
